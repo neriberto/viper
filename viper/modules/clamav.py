@@ -1,6 +1,8 @@
 # This file is part of Viper - https://github.com/viper-framework/viper
 # See the file 'LICENSE' for copying permission.
 
+import mmap
+
 try:
     import pyclamd
     HAVE_CLAMD = True
@@ -53,9 +55,12 @@ class ClamAV(Module):
             self.log('error', "Daemon connection failure, {0}".format(e))
             return
 
+        results = None
         try:
             if daemon.ping():
-                results = daemon.scan_file(__sessions__.current.file.path)
+                with open(__sessions__.current.file.path) as fd:
+                    mm = mmap.mmap(fd.fileno(), 0)
+                    results = daemon.scan_buff(mm.read())
             else:
                 self.log('error', "Unable to connect to the daemon")
         except Exception as e:
@@ -73,4 +78,4 @@ class ClamAV(Module):
         if found == 'ERROR':
             self.log('error', "Check permissions of the binary folder, {0}".format(name))
         else:
-            self.log('info', "Daemon {0} returns: {1}".format(socket, name))
+            self.log('info', "{0} identify file as : {1}".format(socket, name))
