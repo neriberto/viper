@@ -34,7 +34,7 @@ class Radare(Module):
         if self.args is None:
             return
 
-        r2command = ' '.join(self.args.command)
+        r2command = ';'.join(self.args.command)
         if not __sessions__.is_set():
             if os.path.isfile(r2command):
                 __sessions__.new(r2command)

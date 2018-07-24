@@ -106,6 +106,10 @@ function setOptions(chosen) {
         selbox.options[selbox.options.length] = new Option('Auto Detect', 'auto');
     }
 
+    if (chosen == 'r2') {
+        selbox.options[selbox.options.length] = new Option('List Functions', 'functions');
+    }
+
     if (chosen == "reports") {
         selbox.options[selbox.options.length] = new Option('Find Reports On Malwr', 'malwr');
         selbox.options[selbox.options.length] = new Option('Find Reports On Anubis', 'anubis');
