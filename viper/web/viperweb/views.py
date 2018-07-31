@@ -61,8 +61,17 @@ cfg = __config__
 # Helper Functions
 ##
 
+mod_dict = dict()
+for name, item in __modules__.items():
+    d = dict()
+    for i in item['parser_args'].keys():
+        d[i[2:]] = i
+    mod_dict[name] = d
+
+print(mod_dict['r2'])
+
 # Module Dicts (see also viper_dropdown.js) - TODO(frennkie) can this be auto generated (introspection)?!
-mod_dict = {'apk': {'help': '-h',
+mod_dict2 = {'apk': {'help': '-h',
                     'info': '-i',
                     'perm': '-p',
                     'list': '-f',
@@ -112,7 +121,9 @@ mod_dict = {'apk': {'help': '-h',
                    'sections': 'sections',
                    'pehash': 'pehash'},
             'rat': {'auto': '-a', 'list': '-l'},
-            'r2': {'functions': 'aaa afl'},
+            'r2': {'functions': '--functions',
+                    'info': '--info',
+                    'strings': '--strings'},
             'reports': {'malwr': '--malwr',
                         'anubis': '--anubis',
                         'threat': '--threat',

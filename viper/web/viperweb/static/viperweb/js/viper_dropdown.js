@@ -107,7 +107,17 @@ function setOptions(chosen) {
     }
 
     if (chosen == 'r2') {
-        selbox.options[selbox.options.length] = new Option('List Functions', 'functions');
+        selbox.options[selbox.options.length] = new Option('Binary info', 'binary');
+        selbox.options[selbox.options.length] = new Option('Imports', 'imports');
+        selbox.options[selbox.options.length] = new Option('Exports', 'exports');
+        selbox.options[selbox.options.length] = new Option('Functions', 'functions');
+        selbox.options[selbox.options.length] = new Option('Headers', 'headers');
+        selbox.options[selbox.options.length] = new Option('Relocs', 'relocs');
+        selbox.options[selbox.options.length] = new Option('Resources', 'resources');
+        selbox.options[selbox.options.length] = new Option('Sections', 'sections');
+        selbox.options[selbox.options.length] = new Option('Segments', 'segments');
+        selbox.options[selbox.options.length] = new Option('Symbols', 'symbols');
+        selbox.options[selbox.options.length] = new Option('Strings', 'strings');
     }
 
     if (chosen == "reports") {
